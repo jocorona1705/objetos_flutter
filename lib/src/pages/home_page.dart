@@ -14,11 +14,16 @@ class HomePage extends StatelessWidget {
 
   Widget _lista() {
 
-    print(providerData.opciones);
-    
-    return ListView(
-      children: _listaItems(),
+    // print(providerData.opciones);
+
+    return FutureBuilder(
+      future: providerData.cargarData(),
+      initialData: [],
     );
+    
+    // return ListView(
+    //   children: _listaItems(),
+    // );
   }
 
   List<Widget>_listaItems() {
