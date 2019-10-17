@@ -3,17 +3,20 @@
     "rutas" : [
         {
             "ruta" : "alert",
-            "icon" : "add_alert",
+            "iconfirst" : "add_alert",
+            "iconSecond" : "arrow_right",
             "texto": "Alertas"
         },
         {
             "ruta" : "avatar",
-            "icon" : "accessibility",
+            "iconfirst" : "accessibility",
+            "iconSecond" : "arrow_right",
             "texto": "Avatars"
         },
         {
             "ruta" : "card",
-            "icon" : "folder_open",
+            "iconfirst" : "folder_open",
+            "iconSecond" : "arrow_right",
             "texto": "Cards - Tarjetas"
         }
     ]
