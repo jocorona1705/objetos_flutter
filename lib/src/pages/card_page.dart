@@ -17,6 +17,8 @@ class CardPage extends StatelessWidget {
   //ejemplo de tarjeta simple
   Widget _cardTipo() {
     return Card(
+      elevation: 20.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -26,7 +28,8 @@ class CardPage extends StatelessWidget {
               ),
               title: Text('Este es el titulo de la tarjeta'),
               subtitle: Text(
-                  'Aqui esta la descripcion de la tarjeta que se ddebe de mostrar y acomodarse de manera simetrica')),
+                  'Aqui esta la descripcion de la tarjeta que se ddebe de mostrar y acomodarse de manera simetrica')
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
@@ -42,7 +45,7 @@ class CardPage extends StatelessWidget {
   }
 
   _cardTipo2() {
-    return Card(
+    final card = Container(
       child: Column(
         children: <Widget>[
           FadeInImage(
@@ -63,6 +66,25 @@ class CardPage extends StatelessWidget {
             child: Text('No tengo idea que poner aqui'),
           ),
         ],
+      ),
+    );
+
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+        color: Colors.white,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.red,
+            blurRadius:  10.0,
+            spreadRadius: 2.0,
+            offset: Offset(2.0,10.0)
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30.0),
+        child: card,
       ),
     );
   }
