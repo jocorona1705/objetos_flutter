@@ -18,6 +18,12 @@
             "iconfirst" : "folder_open",
             "iconSecond" : "arrow_right",
             "texto": "Cards - Tarjetas"
+        },
+        {
+            "ruta" : "AnimatedContainer",
+            "iconfirst" : "donut",
+            "iconSecond" : "arrow_right",
+            "texto": "Animated Container"
         }
     ]
 }
