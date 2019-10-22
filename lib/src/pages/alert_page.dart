@@ -17,7 +17,7 @@ class AlertPage extends StatelessWidget {
       body: Center(
         child: RaisedButton(
           child: Text('Mostrar Alerta'),
-          onPressed: () => _MostrarAlerta(context),
+          onPressed: () => _mostrarAlerta(context),
           shape: StadiumBorder(),
           color: Colors.blue,
         ),
@@ -25,7 +25,7 @@ class AlertPage extends StatelessWidget {
     );
   }
 
-  void _MostrarAlerta(BuildContext context) {
+  void _mostrarAlerta(BuildContext context) {
 
     showDialog(
       context: context,
