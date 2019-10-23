@@ -24,6 +24,12 @@
             "iconfirst" : "donut",
             "iconSecond" : "arrow_right",
             "texto": "Animated Container"
+        },
+        {
+            "ruta" : "inputs",
+            "iconfirst" : "input",
+            "iconSecond" : "arrow_right",
+            "texto": "inputs"
         }
     ]
 }
