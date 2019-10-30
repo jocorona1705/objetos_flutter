@@ -6,9 +6,14 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  String _nombre;
-  String _email;
+  String _nombre = '';
+  String _email = '';
   String _password;
+  String _fecha = '';
+
+  //permite manejar una relacion con un input, se debe decir a que campo esta pendiente mediante la propiedad
+  //controller del input al que se relaciona.
+  TextEditingController _inputDateController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,7 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _crearPassword(),
           Divider(),
-          _confirmarPassword(),
+          _crearFecha(context),
           Divider(),
           _crearPersona(),
         ],
@@ -103,23 +108,42 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  _confirmarPassword() {
+  Widget _crearFecha(BuildContext context) {
     return TextField(
-      obscureText: true,
+      controller: _inputDateController, //controlador de campo asignado
+      enableInteractiveSelection:
+          false, //se usa para que no se pueda seleccionar (copiar) el contenido del campo
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-        hintText: 'confirmar password',
-        labelText: 'Confirmar password:',
-        helperText: 'Ingrese confirmacion de contraseña.',
-        suffixIcon: Icon(Icons.lock_open),
-        icon: Icon(Icons.lock),
+        hintText: 'Fecha de nacimiento',
+        labelText: 'Fecha de nacimiento:',
+        helperText: 'Seleccione fecha de nacimiento.',
+        suffixIcon: Icon(Icons.perm_contact_calendar),
+        icon: Icon(Icons.calendar_today),
       ),
-      onChanged: (valor) {
-        setState(() {
-          _nombre = valor;
-        });
+      onTap: () {
+        FocusScope.of(context).requestFocus(
+            new FocusNode()); //deshabilita el foco del campo al seleccionarlo
+        _selectDate(context);
       },
     );
+  }
+
+  void _selectDate(BuildContext context) async {
+    DateTime picked = await showDatePicker(
+        //inicializa un DateTime con las propiedades minimas requeridas, usa un async por que regresa un future
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2018),
+        lastDate: new DateTime(2025));
+
+    if (picked != null) {
+      setState(() {
+        _fecha = picked.toString();
+        _inputDateController.text =
+            _fecha; //modifica la propiedad text del controlador del input
+      });
+    }
   }
 
   Widget _crearPersona() {
