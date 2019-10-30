@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:objetos_flutter/src/widgets/alertas.dart';
+import 'package:intl/intl.dart';
 
 class MiInputPage extends StatefulWidget {
   @override
@@ -10,6 +11,9 @@ class _MiInputPageState extends State<MiInputPage> {
   String _nombre;
   String _email;
   String _password;
+  String _fecha;
+
+  TextEditingController _inputDateController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,8 @@ class _MiInputPageState extends State<MiInputPage> {
           _crearPassword(),
           Divider(),
           _confirmarPassword(context),
+          Divider(),
+          _seleccionaFecha(context),
           Divider(),
           _crearPersona(),
         ],
@@ -125,6 +131,46 @@ class _MiInputPageState extends State<MiInputPage> {
         });
       },
     );
+  }
+
+  _seleccionaFecha(BuildContext context) {
+    return TextField(
+      controller: _inputDateController,
+      enableInteractiveSelection: false,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+        hintText: 'seleccione fecha de nacimiento',
+        labelText: 'Fecha de nacimiento:',
+        helperText: 'Fecha de nacimiento.',
+        suffixIcon: Icon(Icons.perm_contact_calendar),
+        icon: Icon(Icons.calendar_today),
+      ),
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        _selectDate(context);
+      },
+    );
+  }
+
+  void _selectDate(BuildContext context) async {
+    DateTime picked = await showDatePicker(
+        //inicializa un DateTime con las propiedades minimas requeridas, usa un async por que regresa un future
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2018),
+        lastDate: new DateTime(2025),
+        locale: Locale('es',
+            'ES')); //cambia de idioma al widget, se tiene que agregar la internacionalizacion desde el main
+
+    if (picked != null) {
+      setState(() {
+        var formatter = new DateFormat(
+            'dd-MM-yyyy'); //formato aplicado, se debe importar package:intl/intl.dart
+        _fecha = formatter.format(picked);
+        _inputDateController.text =
+            _fecha; //modifica la propiedad text del controlador del input
+      });
+    }
   }
 
   Widget _crearPersona() {
