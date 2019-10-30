@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:objetos_flutter/src/widgets/alertas.dart';
 
-class InputPage extends StatefulWidget {
+class MiInputPage extends StatefulWidget {
   @override
-  _InputPageState createState() => _InputPageState();
+  _MiInputPageState createState() => _MiInputPageState();
 }
 
-class _InputPageState extends State<InputPage> {
+class _MiInputPageState extends State<MiInputPage> {
   String _nombre;
   String _email;
   String _password;
@@ -28,7 +29,7 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _crearPassword(),
           Divider(),
-          _confirmarPassword(),
+          _confirmarPassword(context),
           Divider(),
           _crearPersona(),
         ],
@@ -89,9 +90,9 @@ class _InputPageState extends State<InputPage> {
       obscureText: true, //da el formato de password a el contenido del campo
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-        hintText: 'Contraseña',
+        hintText: 'Contrasea',
         labelText: 'Password:',
-        helperText: 'Ingrese contraseña de usuario.',
+        helperText: 'Ingrese contrasea de usuario.',
         suffixIcon: Icon(Icons.lock_open),
         icon: Icon(Icons.lock),
       ),
@@ -103,20 +104,24 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  _confirmarPassword() {
+  _confirmarPassword(BuildContext context) {
     return TextField(
       obscureText: true,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
         hintText: 'confirmar password',
         labelText: 'Confirmar password:',
-        helperText: 'Ingrese confirmacion de contraseña.',
+        helperText: 'Ingrese confirmacion de contrasea.',
         suffixIcon: Icon(Icons.lock_open),
         icon: Icon(Icons.lock),
       ),
       onChanged: (valor) {
         setState(() {
-          _nombre = valor;
+          if (valor.length == _password.length) {
+            if (_password != valor) {
+              alertaEnvio(context, 'Los password no son iguales');
+            }
+          }
         });
       },
     );

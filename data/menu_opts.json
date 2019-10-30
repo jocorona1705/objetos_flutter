@@ -1,35 +1,41 @@
 {
-    "nombreApp" : "Componentes",
-    "rutas" : [
+    "nombreApp": "Componentes",
+    "rutas": [
         {
-            "ruta" : "alert",
-            "iconfirst" : "add_alert",
-            "iconSecond" : "arrow_right",
+            "ruta": "alert",
+            "iconfirst": "add_alert",
+            "iconSecond": "arrow_right",
             "texto": "Alertas"
         },
         {
-            "ruta" : "avatar",
-            "iconfirst" : "accessibility",
-            "iconSecond" : "arrow_right",
+            "ruta": "avatar",
+            "iconfirst": "accessibility",
+            "iconSecond": "arrow_right",
             "texto": "Avatars"
         },
         {
-            "ruta" : "card",
-            "iconfirst" : "folder_open",
-            "iconSecond" : "arrow_right",
+            "ruta": "card",
+            "iconfirst": "folder_open",
+            "iconSecond": "arrow_right",
             "texto": "Cards - Tarjetas"
         },
         {
-            "ruta" : "AnimatedContainer",
-            "iconfirst" : "donut",
-            "iconSecond" : "arrow_right",
+            "ruta": "AnimatedContainer",
+            "iconfirst": "donut",
+            "iconSecond": "arrow_right",
             "texto": "Animated Container"
         },
         {
-            "ruta" : "inputs",
-            "iconfirst" : "input",
-            "iconSecond" : "arrow_right",
+            "ruta": "inputs",
+            "iconfirst": "input",
+            "iconSecond": "arrow_right",
             "texto": "inputs"
+        },
+        {
+            "ruta": "miInputs",
+            "iconfirst": "input",
+            "iconSecond": "arrow_right",
+            "texto": "formulario usuario"
         }
     ]
 }
